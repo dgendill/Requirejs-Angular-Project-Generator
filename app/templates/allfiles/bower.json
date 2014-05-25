@@ -1,0 +1,11 @@
+{
+  "name": "package",
+  "version": "0.0.0",
+  "devDependencies": {
+    "angular" : "*",
+    "angular-route" : "*",
+    "requirejs" : "*",
+    "requirejs-text": "~2.0.10"
+  }
+}
+

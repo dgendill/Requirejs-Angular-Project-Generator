@@ -1,46 +1,19 @@
-require.config({
-	paths: {
-		angular: "../bower_components/angular/angular",
-		angularRoute: "../bower_components/angular-route/angular-route"
-	},
-	shim: {
-		"angular" : {"exports" : "angular"},
-        "controllers": ["angular"],
-        "filters": ["angular"],
-        "directives": ["angular"],
-		"angularRoute": ["angular"],
-	}
-});
-
-//http://code.angularjs.org/1.2.1/docs/guide/bootstrap#overview_deferred-bootstrap
-window.name = "NG_DEFER_BOOTSTRAP!";
-
 require([
-    // Load angular for the first time
-	"angular",
+    'app/require.config',
+    'app/loadOrder'
+], function( config, loadOrder ) {
 
-	// Define the angular module for the app
-	// and require angular module dependencies
-	"app",
+    require.config(config);
 
-	// Include controllers
-	"includes/controllers",
+    //http://code.angularjs.org/1.2.1/docs/guide/bootstrap#overview_deferred-bootstrap
+    window.name = "NG_DEFER_BOOTSTRAP!";
 
-	// Include directives
-	"includes/directives",
+    require(loadOrder, function(angular, app) {
+        "use strict";
 
-	// Include filters
-	"includes/filters",
+        angular.resumeBootstrap();
 
-	// Configure application (routes, providers, etc)
-	"app.config",
-
-	// Run compile code
-	"app.run",
-
-], function(angular, app) {
-	"use strict";
-
-    angular.resumeBootstrap();
+    });
 
 });
+

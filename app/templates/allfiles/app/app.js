@@ -8,5 +8,5 @@ define([
 	], function (angular) {
 		"use strict";
 
-		return angular.module("myappname", ["ngRoute"]);
+		return angular.module("myappname", ["ngRoute", "ngMock"]);
 });
